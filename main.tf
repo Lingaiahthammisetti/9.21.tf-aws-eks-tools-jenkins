@@ -3,8 +3,9 @@ module "jenkins_master" {
   name = "tf-jenkins-master"
 
   instance_type          = "t3.small"
-  vpc_security_group_ids = ["sg-06b1b57b365846051"] #replace your SG
-   ami                   = data.aws_ami.ami_info.id
+  vpc_security_group_ids = ["sg-09c7c70bd56f0d58b"] #replace your SG
+  ami                   = data.aws_ami.ami_info.id
+  subnet_id = var.public_subnet_id
   #ami                    = "ami-041e2ea9402c46c32"
   #user_data              = file("install_jenkins_master.sh")
   user_data               = file("${path.module}/install_jenkins_master.sh")
@@ -19,8 +20,9 @@ module "jenkins_agent" {
   name = "tf-jenkins-agent"
 
   instance_type          = "t3.small"
-  vpc_security_group_ids = ["sg-06b1b57b365846051"] #replace your SG
+  vpc_security_group_ids = ["sg-09c7c70bd56f0d58b"] #replace your SG
   ami                   = data.aws_ami.ami_info.id
+  subnet_id = var.public_subnet_id
   #ami                    = "ami-041e2ea9402c46c32"
   #user_data              = file("install_jenkins_agent.sh")
   user_data               = file("${path.module}/install_jenkins_agent.sh")
