@@ -18,15 +18,14 @@ data "aws_ami" "ami_info" {
          values = ["hvm"]
   }
 }
-variable "public_subnet_id" {
-    type = string
-    default = "subnet-082fdb7c9fa257770" #update it right one.
-}
+# data "aws_availability_zones" "available" {
+#   state = "available"
+# }
 
-
-
-
-
+# variable "public_subnet_id" {
+#     type = string
+#     default = "subnet-082fdb7c9fa257770" #update it right one.
+# }
 
 # data "aws_ami" "nexus_ami_info" {
 
